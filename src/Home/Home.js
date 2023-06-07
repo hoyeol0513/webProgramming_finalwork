@@ -1,94 +1,42 @@
 import React from "react";
 import "./Home.css";
+import LeftSide from "../Acc/LeftSide";
+import Header from "../Acc/Header";
 
 const Home = () => {
+  const list = [
+    { title: "글1", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글2", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글3", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글4", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글5", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글6", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글7", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글8", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글9", tag: ["공모전", "react"], contents: "글 내용" },
+    { title: "글10", tag: ["공모전", "react"], contents: "글 내용" },
+  ];
   return (
-    <div>
-      <div style={{ textAlign: "center", margin: "10px" }}>
-        <div style={{ width: "70px", backgroundColor: "lightgray" }}>로고</div>
-      </div>
+    <div className="container">
+      {/* header */}
+      <Header />
       <div
         style={{
           height: "200px",
           backgroundColor: "lightgray",
-          margin: "10px",
         }}
       >
         배너
       </div>
-      <div class="parent">
-        <div
-          class="child1"
-          style={{
-            backgroundColor: "lightgray",
-            height: "400px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "gray",
-              width: "100px",
-              height: "100px",
-              borderRadius: "50%",
-              textAlign: "center",
-              lineHeight: "100px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "30px",
-              marginTop: "20px",
-            }}
-          >
-            프로필 사진
-          </div>
-          <div
-            onClick={() => {}}
-            style={{
-              backgroundColor: "gray",
-              margin: "0px 10px 0px 10px",
-              height: "30px",
-            }}
-          >
-            <a href="/myPage">마이페이지</a>
-          </div>
-          <div
-            onClick={() => {}}
-            style={{
-              backgroundColor: "gray",
-              margin: "0px 10px 0px 10px",
-              height: "30px",
-            }}
-          >
-            <a href="#">글 관리</a>
-          </div>
-          <div
-            onClick={() => {}}
-            style={{
-              backgroundColor: "gray",
-              margin: "0px 10px 0px 10px",
-              height: "30px",
-            }}
-          >
-            <a href="#">알림</a>
-          </div>
-          <div
-            onClick={() => {}}
-            style={{
-              backgroundColor: "gray",
-              margin: "10px",
-              height: "30px",
-              marginTop: "30px",
-            }}
-          >
-            <a href="#">로그아웃</a>
-          </div>
-        </div>
-        <div class="child2" style={{ minHeight: "100vh" }}>
+      {/* body */}
+      <div className="content">
+        <nav>
+          <LeftSide style={{ position: "sticky", top: "0" }} />
+        </nav>
+        <main style={{ minHeight: "100vh" }}>
           <div
             style={{
               dispaly: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
             }}
           >
             <input type="text" />
@@ -96,55 +44,32 @@ const Home = () => {
               <button style={{ float: "right" }}>모집글 게시</button>
             </span>
           </div>
-          <div style={{ backgroundColor: "lightgray", marginTop: "20px" }}>
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              <a href="#">글 1</a>
-              <hr />
+          {list.map((item) => (
+            <div style={{ backgroundColor: "lightgray", marginTop: "20px" }}>
+              <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                <a href="#">{item.title}</a>
+                <hr />
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <a href="#">#공모전</a>
+              </div>
+              <div>{item.contents}</div>
+              <br />
+              <br />
+              <br />
             </div>
-            <div style={{ textAlign: "right" }}>
-              <a href="#">#공모전</a>
-            </div>
-            <div>글 내용</div>
-            <br />
-            <br />
-            <br />
-          </div>
-          <div style={{ backgroundColor: "lightgray", marginTop: "20px" }}>
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              <a href="#">글 2</a>
-              <hr />
-            </div>
-            <div style={{ textAlign: "right" }}>
-              <a href="#">#공모전</a>
-            </div>
-            <div>글 내용</div>
-            <br />
-            <br />
-            <br />
-          </div>
-
-          <div style={{ backgroundColor: "lightgray", marginTop: "20px" }}>
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              <a href="#">글 3</a>
-              <hr />
-            </div>
-            <div style={{ textAlign: "right" }}>
-              <a href="#">#공모전</a>
-            </div>
-            <div>글 내용</div>
-            <br />
-            <br />
-            <br />
-          </div>
-        </div>
+          ))}
+        </main>
         <div
-          class="child1"
+          className="aside"
           style={{ backgroundColor: "lightgray", height: "500px" }}
         >
           <span>###</span>
         </div>
       </div>
-      <div style={{ height: "8000px" }}></div>
+
+      {/* footer */}
+      <footer>footer</footer>
     </div>
   );
 };
