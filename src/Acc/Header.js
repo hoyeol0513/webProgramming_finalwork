@@ -1,14 +1,18 @@
 import React from "react";
+import collabo_logo from "./logo.png";
+import banner from "./banner.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
       <header>
         <div style={{ textAlign: "center", margin: "10px" }}>
-          <div style={{ width: "70px", backgroundColor: "lightgray" }}>
-            <a href="/">로고</a>
-          </div>
+          <Link to="/">
+            <img src={collabo_logo} alt="logo" style={{ height: "100px" }} />
+          </Link>
         </div>
+        <img src={banner} alt="" style={{ width: "100%" }} />
       </header>
     </div>
   );

@@ -1,14 +1,14 @@
 import React from "react";
-import Header from "./Acc/Header";
-import LeftSide from "./Acc/LeftSide";
-import "./Home/Home.css";
+import Header from "../Acc/Header";
+import LeftSide from "../Acc/LeftSide";
+import "../Home/Home.css";
 
 const MyPage = () => {
   return (
     <div className="container">
       <Header />
       <div className="content">
-        <nav style={{ marginTop: "50px" }}>
+        <nav style={{ marginTop: "10px" }}>
           <LeftSide />
         </nav>
         <main style={{ minHeight: "100vh" }}>
@@ -35,8 +35,6 @@ const MyPage = () => {
                   borderRadius: "50%",
                   textAlign: "center",
                   lineHeight: "100px",
-                  // marginBottom: "30px",
-                  // marginTop: "30px",
                 }}
               ></div>
               <div

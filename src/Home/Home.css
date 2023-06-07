@@ -29,7 +29,6 @@ li {
   margin: 10px 5px 10px 5px;
 }
 .container > .content > .aside {
-  background-color: orange;
   flex-basis: 230px;
   flex-shrink: 0;
   margin: 10px 10px 10px 5px;
