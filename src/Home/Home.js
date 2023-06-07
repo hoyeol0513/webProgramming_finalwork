@@ -49,7 +49,7 @@ const Home = () => {
               height: "30px",
             }}
           >
-            마이페이지
+            <a href="/myPage">마이페이지</a>
           </div>
           <div
             onClick={() => {}}
@@ -59,7 +59,7 @@ const Home = () => {
               height: "30px",
             }}
           >
-            글 관리
+            <a href="#">글 관리</a>
           </div>
           <div
             onClick={() => {}}
@@ -69,7 +69,7 @@ const Home = () => {
               height: "30px",
             }}
           >
-            알림
+            <a href="#">알림</a>
           </div>
           <div
             onClick={() => {}}
@@ -80,7 +80,7 @@ const Home = () => {
               marginTop: "30px",
             }}
           >
-            로그아웃
+            <a href="#">로그아웃</a>
           </div>
         </div>
         <div class="child2" style={{ minHeight: "100vh" }}>
