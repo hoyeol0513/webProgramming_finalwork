@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 
 const UnLogLeftSide = () => {
   return (
-    <div style={{ position: "sticky", top: "20px" }}>
+    <div style={{ position: "sticky", top: "25px" }}>
       <div
         style={{
           textAlign: "center",
           height: "250px",
-          backgroundColor: "lightgray",
           paddingTop: "10px",
           marginRight: "10px",
         }}
