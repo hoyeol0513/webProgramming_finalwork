@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Join&Login/Signcss.css";
 import collabo_logo from "../Acc/logo.png";
-import { Button } from "antd";
 
 function Login(props) {
   const { userData, isLogined, setIsLogined } = props;
@@ -22,19 +21,20 @@ function Login(props) {
     console.log("ID:", id);
     console.log("Pwd:", pwd);
 
-    // 회원가입 정보와 일치하는지 확인
     if (id === userData?.userID && pwd === userData?.userPWD) {
       setIsLogined(true);
       window.confirm(`로그인 성공`);
-      navigate("/"); // 로그인 하고 이동할 js
+      navigate("/");
     } else {
       setIsLogined(false);
-      alert("사용자 정보가 틀렸습니다.");
+      alert(
+        "존재하지 않는 정보거나 잘못 입력된 정보입니다. 다시 입력해주세요."
+      );
     }
   };
 
   const userMyPage = () => {
-    navigate("/join"); // 회원가입 버튼 클릭 시 MyPage로 이동
+    navigate("/join");
   };
 
   return (
@@ -64,12 +64,6 @@ function Login(props) {
         <label>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PWD &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input
-            // style={{
-            //   padding: "8px",
-            //   marginBottom: "16px",
-            //   border: "2px solid #000",
-            //   borderRadius: "4px",
-            // }}
             className="inputsetting"
             type="password"
             value={pwd}
