@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import "../Home/Home.css";
-import { Avatar, Button, Divider, Input, Modal, Select, Space } from "antd";
+import { Avatar, Button, Input, Modal, Select, Space } from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
