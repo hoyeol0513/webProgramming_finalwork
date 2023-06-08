@@ -3,7 +3,7 @@ import "./Home.css";
 import LeftSide from "../Acc/LeftSide";
 import Header from "../Acc/Header";
 import { AudioOutlined } from "@ant-design/icons";
-import { Input, Space, Button, List } from "antd";
+import { Input, Button, List } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import RightSide from "../Acc/RightSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
@@ -36,15 +36,6 @@ const Home = (props) => {
       contents: "졸업논문을 위해 심리학과 학생을 모집합니다.",
       tag: ["심리학과", "대학생", "통게"],
     },
-    { title: "글3", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글4", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글5", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
-    { title: "글", contents: "글 내용", tag: ["공모전", "대회"] },
   ];
   return (
     <div className="container">
@@ -71,21 +62,36 @@ const Home = (props) => {
 
       {/* body */}
       <div className="content">
-        <nav>{isLogined ? <LeftSide /> : <UnLogLeftSide />}</nav>
-        <main style={{ minHeight: "100vh" }}>
+        <nav
+          style={{
+            border: "none",
+            borderRightStyle: "dashed",
+            borderRightwidth: "1px",
+            borderRightColor: "navy",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {isLogined ? <LeftSide /> : <UnLogLeftSide />}
+        </nav>
+        <main
+          style={{
+            minHeight: "100vh",
+            paddingRight: "20px",
+            paddingLeft: "20px",
+          }}
+        >
           <div
             style={{
               dispaly: "flex",
             }}
           >
-            <Space direction="vertical">
-              <Search
-                placeholder="input search text"
-                onSearch={() => {}}
-                enterButton
-                style={{ width: "500px" }}
-              />
-            </Space>
+            <Search
+              placeholder="input search text"
+              onSearch={() => {}}
+              enterButton
+              style={{ width: "500px" }}
+            />
 
             <span>
               <Button
@@ -103,6 +109,7 @@ const Home = (props) => {
               </Button>
             </span>
           </div>
+          <br />
 
           <List
             itemLayout="horizontal"
@@ -149,13 +156,23 @@ const Home = (props) => {
         </main>
 
         {/* Right side bar */}
-        <div className="aside">
+        <div
+          className="aside"
+          style={{
+            border: "none",
+            borderLeftStyle: "dashed",
+            borderLeftwidth: "1px",
+            borderLeftColor: "navy",
+            margin: 0,
+            padding: 0,
+          }}
+        >
           <RightSide />
         </div>
       </div>
 
       {/* footer */}
-      <footer>footer</footer>
+      <footer style={{ backgroundColor: "navy" }}>footer</footer>
     </div>
   );
 };

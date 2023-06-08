@@ -10,6 +10,7 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [isLogined, setIsLogined] = useState();
   const [data, setData] = useState([]);
+  const [image, setImage] = useState("");
   const userSignUp = (id, pwd, edu, maj) => {
     setUserData({
       userID: id,
@@ -17,6 +18,7 @@ function App() {
       userEdu: edu,
       userMaj: maj,
       userPort: data,
+      userImg: image,
     });
   };
 
@@ -44,6 +46,8 @@ function App() {
                 setUserData={setUserData}
                 data={data}
                 setData={setData}
+                image={image}
+                setImage={setImage}
               />
             }
           ></Route>

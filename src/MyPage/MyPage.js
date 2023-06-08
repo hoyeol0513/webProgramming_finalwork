@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import "../Home/Home.css";
-import { Button, Input, Modal, Select, Space } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Avatar, Button, Input, Modal, Select, Space } from "antd";
+import { UserOutlined, UploadOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 
 const MyPage = (props) => {
   const navigate = useNavigate();
-  const { userData, setUserData, isLogined, setIsLogined, data, setData } =
-    props;
+  const {
+    userData,
+    setUserData,
+    isLogined,
+    setIsLogined,
+    data,
+    setData,
+    image,
+    setImage,
+  } = props;
   console.log(userData);
   console.log(isLogined);
 
@@ -31,6 +40,28 @@ const MyPage = (props) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const [file, setFile] = useState("");
+  const fileInput = useRef(null);
+
+  const img_onChange = (e) => {
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    } else {
+      setImage(
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      );
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
     <div className="container">
       <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
@@ -55,8 +86,19 @@ const MyPage = (props) => {
       </div>
       <Header />
       <div className="content">
-        <nav>{isLogined ? <LeftSide /> : <UnLogLeftSide />}</nav>
-        <main style={{ minHeight: "80vh" }}>
+        <nav
+          style={{
+            border: "none",
+            borderRightStyle: "dashed",
+            borderRightwidth: "1px",
+            borderRightColor: "navy",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {isLogined ? <LeftSide userData={userData} /> : <UnLogLeftSide />}
+        </nav>
+        <main style={{ minHeight: "80vh", paddingLeft: "20px" }}>
           <h2
             style={{
               fontWeight: "bolder",
@@ -69,7 +111,6 @@ const MyPage = (props) => {
           <div
             style={{
               backgroundColor: "white",
-              border: "solid 3px lightgray",
               height: "550px",
               display: "flex",
               flexDirection: "row",
@@ -79,25 +120,41 @@ const MyPage = (props) => {
               className="profile"
               style={{ flexGrow: "6", textAlign: "center" }}
             >
-              <div
-                style={{
-                  backgroundColor: "gray",
-                  width: "200px",
-                  height: "200px",
-                  borderRadius: "50%",
-                  textAlign: "center",
-                  lineHeight: "100px",
-                }}
-              ></div>
               <Space direction="vertical">
+                <Avatar
+                  src={image}
+                  style={{ margin: "10px" }}
+                  size={200}
+                  icon={<UserOutlined />}
+                />
+                <input
+                  type="file"
+                  style={{ display: "none" }}
+                  accept="image/jpg,impge/png,image/jpeg"
+                  name="profile_img"
+                  onChange={img_onChange}
+                  ref={fileInput}
+                />
                 <Button
+                  style={{ width: "200px", margin: "10px", display: "block" }}
                   type="primary"
-                  style={{ width: "200px", margin: "5px" }}
+                  icon={<UploadOutlined />}
+                  onClick={() => {
+                    fileInput.current.click();
+                  }}
                 >
-                  <Link to="#">프로필 사진 변경</Link>
+                  프로필 사진 변경
                 </Button>
-                <Button type="dashed" style={{ width: "200px", margin: "5px" }}>
-                  <Link to="#">프로필 사진 초기화</Link>
+                <Button
+                  type="dashed"
+                  style={{ width: "200px", margin: "10px", display: "block" }}
+                  onClick={() => {
+                    setImage(
+                      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    );
+                  }}
+                >
+                  프로필 사진 초기화
                 </Button>
               </Space>
             </div>
@@ -121,6 +178,7 @@ const MyPage = (props) => {
                         userEdu: userData.userEdu,
                         userMaj: userData.userMaj,
                         userPort: userData.userPort,
+                        userImg: userData.userImg,
                       });
                     }}
                     defaultValue={isLogined ? userData.userID : ""}
@@ -141,6 +199,7 @@ const MyPage = (props) => {
                         userEdu: e,
                         userMaj: userData.userMaj,
                         userPort: userData.userPort,
+                        userImg: userData.userImg,
                       });
                     }}
                     options={[
@@ -167,6 +226,7 @@ const MyPage = (props) => {
                         userEdu: userData.userEdu,
                         userMaj: e,
                         userPort: userData.userPort,
+                        userImg: userData.userImg,
                       });
                     }}
                     options={[
@@ -215,6 +275,7 @@ const MyPage = (props) => {
                 <div
                   style={{
                     height: "300px",
+                    border: "solid 1px lightgray",
                     overflowY: "scroll",
                   }}
                 >
@@ -228,14 +289,17 @@ const MyPage = (props) => {
               type="primary"
               style={{ float: "right", margin: "5px" }}
               onClick={() => {
-                setUserData({
-                  userID: userData.userID,
-                  userPWD: userData.userPWD,
-                  userEdu: userData.userEdu,
-                  userMaj: userData.userMaj,
-                  userPort: data,
-                });
-                alert("수정되었습니다.");
+                if (isLogined) {
+                  setUserData({
+                    userID: userData.userID,
+                    userPWD: userData.userPWD,
+                    userEdu: userData.userEdu,
+                    userMaj: userData.userMaj,
+                    userPort: data,
+                    userImg: userData.userImg,
+                  });
+                  alert("수정되었습니다.");
+                } else alert("로그인 후 이용 가능합니다.");
               }}
             >
               변경사항 저장
@@ -254,6 +318,7 @@ const MyPage = (props) => {
           </div>
         </main>
       </div>
+      <footer style={{ backgroundColor: "navy" }}>footer</footer>
     </div>
   );
 };

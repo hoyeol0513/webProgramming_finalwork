@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div>
       <header>
-        <div style={{ textAlign: "center", margin: "10px" }}>
+        <div style={{ textAlign: "center", marginBottom: "10px" }}>
           <Link to="/">
             <img src={collabo_logo} alt="logo" style={{ height: "100px" }} />
           </Link>

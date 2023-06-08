@@ -1,8 +1,7 @@
-import { Button, Card, List } from "antd";
+import { Card, List } from "antd";
 import React from "react";
 
 const Portfolio = ({ data }) => {
-  console.log(data);
   return (
     <div>
       <List

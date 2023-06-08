@@ -1,38 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const LeftSide = (props) => {
+const LeftSide = () => {
   return (
-    <div style={{ position: "sticky", top: "20px" }}>
+    <div style={{ position: "sticky", top: "25px" }}>
       <div
         style={{
-          textAlign: "center",
-          height: "250px",
-          backgroundColor: "lightgray",
+          height: "150px",
           paddingTop: "10px",
           marginRight: "10px",
         }}
       >
-        <div
-          style={{
-            backgroundColor: "gray",
-            width: "100px",
-            height: "100px",
-            borderRadius: "50%",
-            textAlign: "center",
-            lineHeight: "100px",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "30px",
-            marginTop: "0px",
-          }}
-        >
-          프로필 사진
-        </div>
+        {/* <Avatar
+          src={userData.userImg}
+          style={{ margin: "10px" }}
+          size={120}
+          icon={<UserOutlined />}
+        /> */}
         <div
           onClick={() => {}}
           style={{
-            backgroundColor: "gray",
             margin: "0px 10px 0px 10px",
             height: "30px",
           }}
@@ -42,7 +29,6 @@ const LeftSide = (props) => {
         <div
           onClick={() => {}}
           style={{
-            backgroundColor: "gray",
             margin: "0px 10px 0px 10px",
             height: "30px",
           }}
@@ -52,7 +38,6 @@ const LeftSide = (props) => {
         <div
           onClick={() => {}}
           style={{
-            backgroundColor: "gray",
             margin: "0px 10px 0px 10px",
             height: "30px",
           }}
