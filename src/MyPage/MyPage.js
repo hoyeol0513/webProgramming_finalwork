@@ -2,16 +2,35 @@ import React, { useState } from "react";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import "../Home/Home.css";
-import { Button, Input, Select, Space, Typography } from "antd";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Paragraph from "antd/es/skeleton/Paragraph";
+import { Button, Input, Modal, Select, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import Portfolio from "./Portfolio";
+import UnLogLeftSide from "../Acc/UnLogLeftSide";
 
 const MyPage = (props) => {
   const navigate = useNavigate();
-  const { userData, setUserData, isLogined, setIsLogined } = props;
+  const { userData, setUserData, isLogined, setIsLogined, data, setData } =
+    props;
   console.log(userData);
   console.log(isLogined);
-  const [port, setPort] = useState("");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [addtitle, setAddtitle] = useState("");
+  const [addurl, setAddurl] = useState("");
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    console.log("data : " + data);
+    setData([...data, { title: addtitle, url: addurl }]);
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="container">
       <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
@@ -36,9 +55,7 @@ const MyPage = (props) => {
       </div>
       <Header />
       <div className="content">
-        <nav>
-          <LeftSide />
-        </nav>
+        <nav>{isLogined ? <LeftSide /> : <UnLogLeftSide />}</nav>
         <main style={{ minHeight: "80vh" }}>
           <h2
             style={{
@@ -53,14 +70,14 @@ const MyPage = (props) => {
             style={{
               backgroundColor: "white",
               border: "solid 3px lightgray",
-              height: "450px",
+              height: "550px",
               display: "flex",
               flexDirection: "row",
             }}
           >
             <div
               className="profile"
-              style={{ flexGrow: "3", textAlign: "center" }}
+              style={{ flexGrow: "6", textAlign: "center" }}
             >
               <div
                 style={{
@@ -84,7 +101,7 @@ const MyPage = (props) => {
                 </Button>
               </Space>
             </div>
-            <div style={{ flexGrow: "10" }}>
+            <div style={{ flexGrow: "8" }}>
               <ul>
                 <li>
                   아이디
@@ -103,6 +120,7 @@ const MyPage = (props) => {
                         userPWD: userData.userPWD,
                         userEdu: userData.userEdu,
                         userMaj: userData.userMaj,
+                        userPort: userData.userPort,
                       });
                     }}
                     defaultValue={isLogined ? userData.userID : ""}
@@ -122,6 +140,7 @@ const MyPage = (props) => {
                         userPWD: userData.userPWD,
                         userEdu: e,
                         userMaj: userData.userMaj,
+                        userPort: userData.userPort,
                       });
                     }}
                     options={[
@@ -133,7 +152,6 @@ const MyPage = (props) => {
                     ]}
                   />
                 </li>
-
                 <li>
                   학과
                   <Select
@@ -148,6 +166,7 @@ const MyPage = (props) => {
                         userPWD: userData.userPWD,
                         userEdu: userData.userEdu,
                         userMaj: e,
+                        userPort: userData.userPort,
                       });
                     }}
                     options={[
@@ -164,15 +183,43 @@ const MyPage = (props) => {
                     ]}
                   />
                 </li>
-                <li>나의 포토폴리오</li>
+                <li>
+                  나의 포토폴리오{" "}
+                  <Button style={{ marginLeft: "10px" }} onClick={showModal}>
+                    추가
+                  </Button>
+                  <Modal
+                    title="포토폴리오 추가"
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                  >
+                    <div style={{ marginBottom: "5px" }}>Title</div>
+                    <Input
+                      placeholder="Please write your portfolio title..."
+                      value={addtitle}
+                      onChange={(e) => {
+                        setAddtitle(e.target.value);
+                      }}
+                    />
+                    <div style={{ marginBottom: "5px" }}>URL</div>
+                    <Input
+                      placeholder="Please write your portfolio url..."
+                      value={addurl}
+                      onChange={(e) => {
+                        setAddurl(e.target.value);
+                      }}
+                    />
+                  </Modal>
+                </li>
                 <div
                   style={{
-                    height: "150px",
-                    backgroundColor: "white",
-                    border: "solid 3px lightgray",
-                    marginLeft: "10px",
+                    height: "300px",
+                    overflowY: "scroll",
                   }}
-                ></div>
+                >
+                  {isLogined ? <Portfolio data={data} /> : <Portfolio />}
+                </div>
               </ul>
             </div>
           </div>
@@ -186,6 +233,7 @@ const MyPage = (props) => {
                   userPWD: userData.userPWD,
                   userEdu: userData.userEdu,
                   userMaj: userData.userMaj,
+                  userPort: data,
                 });
                 alert("수정되었습니다.");
               }}

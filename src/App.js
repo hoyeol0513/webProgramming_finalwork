@@ -9,12 +9,14 @@ import Join from "./Join&Login/Join";
 function App() {
   const [userData, setUserData] = useState(null);
   const [isLogined, setIsLogined] = useState();
+  const [data, setData] = useState([]);
   const userSignUp = (id, pwd, edu, maj) => {
     setUserData({
       userID: id,
       userPWD: pwd,
       userEdu: edu,
       userMaj: maj,
+      userPort: data,
     });
   };
 
@@ -40,6 +42,8 @@ function App() {
                 isLogined={isLogined}
                 setIsLogined={setIsLogined}
                 setUserData={setUserData}
+                data={data}
+                setData={setData}
               />
             }
           ></Route>
