@@ -4,10 +4,15 @@ import LeftSide from "../Acc/LeftSide";
 import Header from "../Acc/Header";
 import { AudioOutlined } from "@ant-design/icons";
 import { Input, Space, Button, List } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RightSide from "../Acc/RightSide";
+import UnLogLeftSide from "../Acc/UnLogLeftSide";
 
-const Home = () => {
+const Home = (props) => {
+  const navigate = useNavigate();
+  const { userData, isLogined, setIsLogined } = props;
+  console.log(userData);
+  console.log(isLogined);
   const { Search } = Input;
   const suffix = (
     <AudioOutlined
@@ -43,22 +48,36 @@ const Home = () => {
   ];
   return (
     <div className="container">
-      {/* header */}
+      <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
+        <Button
+          style={{ marginRight: "10px" }}
+          onClick={() => {
+            navigate("/join");
+          }}
+        >
+          회원가입
+        </Button>
+        <Button
+          onClick={() => {
+            if (isLogined) setIsLogined(false);
+            else navigate("/login");
+          }}
+        >
+          {isLogined ? "로그아웃" : "로그인"}
+        </Button>
+      </div>
       <Header />
+      {/* header */}
 
       {/* body */}
       <div className="content">
-        <nav>
-          <LeftSide />
-        </nav>
+        <nav>{isLogined ? <LeftSide /> : <UnLogLeftSide />}</nav>
         <main style={{ minHeight: "100vh" }}>
           <div
             style={{
               dispaly: "flex",
             }}
           >
-            {/* <input type="text" /> */}
-            {/* <Search placeholder="input search loading default" loading /> */}
             <Space direction="vertical">
               <Search
                 placeholder="input search text"
@@ -69,8 +88,18 @@ const Home = () => {
             </Space>
 
             <span>
-              <Button type="primary" style={{ float: "right" }}>
-                모집글 게시
+              <Button
+                type="primary"
+                style={{ float: "right" }}
+                onClick={() => {
+                  if (!isLogined) alert("로그인이 필요한 서비스입니다.");
+                }}
+              >
+                {isLogined ? (
+                  <Link to="/write">모집글 게시</Link>
+                ) : (
+                  <Link to="/">모집글 게시</Link>
+                )}
               </Button>
             </span>
           </div>
