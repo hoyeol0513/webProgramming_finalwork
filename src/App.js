@@ -2,9 +2,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./Home/Home";
-import MyPage from "./MyPage/MyPage";
+import MyPage from "./Page/MyPage";
 import Login from "./Join&Login/Login";
 import Join from "./Join&Login/Join";
+import List from "./Page/List";
+import Notice from "./Page/Notice";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -49,6 +51,16 @@ function App() {
                 image={image}
                 setImage={setImage}
               />
+            }
+          ></Route>
+          <Route
+            path="/list"
+            element={<List isLogined={isLogined} setIsLogined={setIsLogined} />}
+          ></Route>
+          <Route
+            path="/notice"
+            element={
+              <Notice isLogined={isLogined} setIsLogined={setIsLogined} />
             }
           ></Route>
           <Route

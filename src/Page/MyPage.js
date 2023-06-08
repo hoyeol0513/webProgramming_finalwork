@@ -96,7 +96,7 @@ const MyPage = (props) => {
             padding: 0,
           }}
         >
-          {isLogined ? <LeftSide userData={userData} /> : <UnLogLeftSide />}
+          {isLogined ? <LeftSide /> : <UnLogLeftSide />}
         </nav>
         <main style={{ minHeight: "100vh", paddingLeft: "20px" }}>
           <h2
