@@ -14,16 +14,7 @@ const Home = (props) => {
   console.log(userData);
   console.log(isLogined);
   const { Search } = Input;
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: "#1677ff",
-      }}
-    />
-  );
-  const [position, setPosition] = useState("bottom");
-  const [align, setAlign] = useState("center");
+
   const list = [
     {
       title: "IT공모전 참가를 위한 디자이너 모집",

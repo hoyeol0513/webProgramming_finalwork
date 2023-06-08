@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import "../Home/Home.css";
-import { Avatar, Button, Input, Modal, Select, Space } from "antd";
+import { Avatar, Button, Divider, Input, Modal, Select, Space } from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
@@ -98,12 +98,13 @@ const MyPage = (props) => {
         >
           {isLogined ? <LeftSide userData={userData} /> : <UnLogLeftSide />}
         </nav>
-        <main style={{ minHeight: "80vh", paddingLeft: "20px" }}>
+        <main style={{ minHeight: "100vh", paddingLeft: "20px" }}>
           <h2
             style={{
               fontWeight: "bolder",
-              fontSize: "1.7rem",
-              marginTop: "-1px",
+              fontSize: "1.5rem",
+              marginTop: "10px",
+              color: "navy",
             }}
           >
             마이페이지
@@ -277,6 +278,7 @@ const MyPage = (props) => {
                     height: "300px",
                     border: "solid 1px lightgray",
                     overflowY: "scroll",
+                    padding: "10px",
                   }}
                 >
                   {isLogined ? <Portfolio data={data} /> : <Portfolio />}

@@ -11,12 +11,6 @@ const LeftSide = () => {
           marginRight: "10px",
         }}
       >
-        {/* <Avatar
-          src={userData.userImg}
-          style={{ margin: "10px" }}
-          size={120}
-          icon={<UserOutlined />}
-        /> */}
         <div
           onClick={() => {}}
           style={{
@@ -42,7 +36,7 @@ const LeftSide = () => {
             height: "30px",
           }}
         >
-          <Link to="/">알림</Link>
+          <Link to="#">알림</Link>
         </div>
       </div>
     </div>
