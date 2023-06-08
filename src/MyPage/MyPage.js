@@ -26,6 +26,8 @@ const MyPage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addtitle, setAddtitle] = useState("");
   const [addurl, setAddurl] = useState("");
+  const [file, setFile] = useState("");
+  const fileInput = useRef(null);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -40,9 +42,6 @@ const MyPage = (props) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  const [file, setFile] = useState("");
-  const fileInput = useRef(null);
 
   const img_onChange = (e) => {
     if (e.target.files[0]) {
@@ -281,7 +280,11 @@ const MyPage = (props) => {
                     padding: "10px",
                   }}
                 >
-                  {isLogined ? <Portfolio data={data} /> : <Portfolio />}
+                  {isLogined ? (
+                    <Portfolio data={data} setData={setData} />
+                  ) : (
+                    <Portfolio />
+                  )}
                 </div>
               </ul>
             </div>
