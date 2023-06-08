@@ -7,6 +7,7 @@ import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
+import Footer from "../Acc/Footer";
 
 const MyPage = (props) => {
   const navigate = useNavigate();
@@ -323,7 +324,9 @@ const MyPage = (props) => {
           </div>
         </main>
       </div>
-      <footer style={{ backgroundColor: "navy" }}>footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };

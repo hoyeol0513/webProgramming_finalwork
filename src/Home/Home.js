@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./Home.css";
 import LeftSide from "../Acc/LeftSide";
 import Header from "../Acc/Header";
-import { AudioOutlined } from "@ant-design/icons";
 import { Input, Button, List } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import RightSide from "../Acc/RightSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
+import Footer from "../Acc/Footer";
 
 const Home = (props) => {
   const navigate = useNavigate();
@@ -163,7 +163,9 @@ const Home = (props) => {
       </div>
 
       {/* footer */}
-      <footer style={{ backgroundColor: "navy" }}>footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
