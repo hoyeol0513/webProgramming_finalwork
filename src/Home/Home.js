@@ -7,27 +7,15 @@ import { Link, useNavigate } from "react-router-dom";
 import RightSide from "../Acc/RightSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 import Footer from "../Acc/Footer";
+import Post from "../Page/Post";
 
 const Home = (props) => {
   const navigate = useNavigate();
-  const { userData, isLogined, setIsLogined } = props;
+  const { userData, isLogined, setIsLogined, listdata } = props;
   console.log(userData);
   console.log(isLogined);
   const { Search } = Input;
 
-  const list = [
-    {
-      title: "IT공모전 참가를 위한 디자이너 모집",
-      contents:
-        "2023년 7월까지 진행되는 IT공모전 어플리케이션 제작을 위해 UI/UX 및 로고 제작에 관심이 많은 디자이너를 모집합니다. 어플리케이션 제작을 위해서 React Native나 android studio를 활용할 수 있는 사람들을 모집합니다.",
-      tag: ["IT공모전", "대회", "UI", "UX"],
-    },
-    {
-      title: "소비패턴 통계연구를 위한 심리학과 학생 모집",
-      contents: "졸업논문을 위해 심리학과 학생을 모집합니다.",
-      tag: ["심리학과", "대학생", "통게"],
-    },
-  ];
   return (
     <div className="container">
       <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
@@ -90,13 +78,13 @@ const Home = (props) => {
                 style={{ float: "right" }}
                 onClick={() => {
                   if (!isLogined) alert("로그인이 필요한 서비스입니다.");
+                  else {
+                    //Post 컴포넌트 전달
+                    alert("클릭됨");
+                  }
                 }}
               >
-                {isLogined ? (
-                  <Link to="/write">모집글 게시</Link>
-                ) : (
-                  <Link to="/">모집글 게시</Link>
-                )}
+                모집글 게시
               </Button>
             </span>
           </div>
@@ -104,13 +92,13 @@ const Home = (props) => {
 
           <List
             itemLayout="horizontal"
-            dataSource={list}
+            dataSource={listdata}
             renderItem={(item, index) => (
               <List.Item>
                 <List.Item.Meta
                   title={
                     <Link
-                      to="/"
+                      to={`/listitem/${index}`}
                       style={{ fontSize: "1.3rem", marginBottom: "10px" }}
                     >
                       {item.title}
