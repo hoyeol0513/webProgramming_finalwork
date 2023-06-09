@@ -1,4 +1,4 @@
-import { Avatar, Button, Input, Space } from "antd";
+import { Avatar, Button, Col, Input, Row, Space } from "antd";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Acc/Header";
@@ -80,7 +80,7 @@ const BoardListItem = (props) => {
                     >
                       {item.title}
                     </h2>
-                    <div
+                    {/* <div
                       style={{
                         margin: "10px 0 10px 0",
                         textAlign: "end",
@@ -92,7 +92,20 @@ const BoardListItem = (props) => {
                           #{i} &nbsp;
                         </div>
                       ))}
-                    </div>
+                    </div> */}
+                    <h3>프로젝트 조건</h3>
+                    <ul>
+                      <Row>
+                        <Col span={12}>
+                          <li>☑️ 모집 분야 : {item.acquireMajor}</li>
+                          <li>☑️ 모집 인원 : {item.numberTeam}</li>
+                        </Col>
+                        <Col span={12}>
+                          <li>☑️ 모집 장소 : {item.location}</li>
+                          <li>☑️ 필요 학력 : {item.education}</li>
+                        </Col>
+                      </Row>
+                    </ul>
                     <h3>프로젝트 내용</h3>
                     <div
                       style={{
@@ -149,7 +162,10 @@ const BoardListItem = (props) => {
                         </div>
                       ))}
                     </div>
-                    <form onSubmit={handleSubmit} className="form-container">
+                    <form
+                      onSubmit={handleSubmit}
+                      style={{ marginBottom: "30px" }}
+                    >
                       <Input
                         placeholder="댓글을 입력하세요"
                         type="text"

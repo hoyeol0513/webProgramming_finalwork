@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import RightSide from "../Acc/RightSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 import Footer from "../Acc/Footer";
-import Post from "../Page/Post";
 
 const Home = (props) => {
   const navigate = useNavigate();
@@ -80,7 +79,7 @@ const Home = (props) => {
                   if (!isLogined) alert("로그인이 필요한 서비스입니다.");
                   else {
                     //Post 컴포넌트 전달
-                    alert("클릭됨");
+                    navigate("/post");
                   }
                 }}
               >
@@ -106,7 +105,7 @@ const Home = (props) => {
                   }
                   description={
                     <>
-                      <div
+                      {/* <div
                         style={{
                           fontSize: "0.8rem",
                           textAlign: "end",
@@ -116,7 +115,7 @@ const Home = (props) => {
                         {item.tag.map((i) => (
                           <span>#{i} &nbsp;</span>
                         ))}
-                      </div>
+                      </div> */}
                       <div
                         style={{
                           fontSize: "1rem",
