@@ -11,7 +11,8 @@ import { UserOutlined } from "@ant-design/icons";
 
 const BoardListItem = (props) => {
   const { id } = useParams();
-  const { listdata, isLogined, setIsLogined } = props;
+  const { listdata, isLogined, setIsLogined, favoriteList, setFavoriteList } =
+    props;
   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
@@ -80,19 +81,7 @@ const BoardListItem = (props) => {
                     >
                       {item.title}
                     </h2>
-                    {/* <div
-                      style={{
-                        margin: "10px 0 10px 0",
-                        textAlign: "end",
-                        width: "95%",
-                      }}
-                    >
-                      {item.tag.map((i) => (
-                        <div style={{ display: "inline-block" }}>
-                          #{i} &nbsp;
-                        </div>
-                      ))}
-                    </div> */}
+
                     <h3>프로젝트 조건</h3>
                     <ul>
                       <Row>
@@ -130,7 +119,28 @@ const BoardListItem = (props) => {
                         type="primary"
                         onClick={() => {
                           if (isLogined) {
-                            //참가 신청 넣기
+                            setFavoriteList(...favoriteList, [
+                              {
+                                title: item.title,
+                                acquireMajor: item.acquireMajor,
+                                numberTeam: item.numberTeam,
+                                location: item.location,
+                                education: item.education,
+                                contents: item.contents,
+                              },
+                            ]);
+                            alert("관심 글 설정이 완료되었습니다.");
+                            navigate("/");
+                          } else alert("로그인이 필요한 서비스입니다.");
+                        }}
+                      >
+                        관심 설정
+                      </Button>
+                      <Button
+                        type="primary"
+                        style={{ marginLeft: "20px" }}
+                        onClick={() => {
+                          if (isLogined) {
                             if (window.confirm("참가 신청하시겠습니까?")) {
                               alert("참가 신청이 완료되었습니다.");
                             }

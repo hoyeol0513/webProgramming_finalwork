@@ -19,6 +19,7 @@ function App() {
   const [data, setData] = useState([]);
   const [image, setImage] = useState("");
   const [listdata, setListdata] = useState(list);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   const userSignUp = (id, pwd, edu, maj) => {
     setUserData({
@@ -68,6 +69,7 @@ function App() {
                 isLogined={isLogined}
                 setIsLogined={setIsLogined}
                 listdata={listdata}
+                favoriteList={favoriteList}
               />
             }
           ></Route>
@@ -110,6 +112,8 @@ function App() {
                 listdata={listdata}
                 isLogined={isLogined}
                 setIsLogined={setIsLogined}
+                favoriteList={favoriteList}
+                setFavoriteList={setFavoriteList}
               />
             }
           ></Route>

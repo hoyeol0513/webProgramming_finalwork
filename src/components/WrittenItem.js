@@ -2,7 +2,7 @@ import { List } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const WriteUp = ({ listdata }) => {
+const WrittenItem = ({ listdata }) => {
   return (
     <div>
       <List
@@ -40,4 +40,4 @@ const WriteUp = ({ listdata }) => {
   );
 };
 
-export default WriteUp;
+export default WrittenItem;

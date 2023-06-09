@@ -10,7 +10,7 @@ import WrittenItem from "../components/WrittenItem";
 import FavoriteItem from "../components/FavoriteItem";
 
 const List = (props) => {
-  const { isLogined, setIsLogined, listdata } = props;
+  const { isLogined, setIsLogined, listdata, favoriteList } = props;
   const navigate = useNavigate();
   const items = [
     {
@@ -21,7 +21,7 @@ const List = (props) => {
     {
       key: "2",
       label: "관심 글",
-      children: <FavoriteItem />,
+      children: <FavoriteItem favoriteList={favoriteList} />,
     },
   ];
   return (

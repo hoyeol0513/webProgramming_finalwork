@@ -7,7 +7,7 @@ class AnnounceItem extends Component {
     this.state = {
       activeTab: "mynotes",
       selectedMessage: null,
-      list: ["공지사항 1", "공지사항 2", "공지사항"],
+      list: ["공지사항 1", "공지사항 2", "공지사항 3"],
     };
   }
 

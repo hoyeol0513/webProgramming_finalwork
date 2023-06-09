@@ -76,7 +76,6 @@ function Post(props) {
       education: EducationValue,
       contents: DescriptionValue,
     };
-    console.log(values);
     if (isLogined) {
       if ((values.title !== "") & (values.contents !== "")) {
         setListdata([...listdata, values]);
@@ -85,8 +84,6 @@ function Post(props) {
         alert("작성하지 않은 칸이 있습니다.");
       }
     } else alert("로그인이 필요한 서비스입니다.");
-    console.log(values);
-    console.log(listdata);
   };
 
   return (
