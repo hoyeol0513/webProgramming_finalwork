@@ -25,7 +25,7 @@ const BoardListItem = (props) => {
     if (isLogined) {
       if (updatedComment !== "")
         setCommentList([...commentList, updatedComment]);
-    } else alert("로그인 후 이용하실 수 있습니다.");
+    } else alert("로그인이 필요한 서비스입니다.");
     setComment("");
   };
   return (
@@ -105,6 +105,27 @@ const BoardListItem = (props) => {
                       }}
                     >
                       {item.contents}
+                    </div>
+                    <div
+                      style={{
+                        width: "97%",
+                        textAlign: "end",
+                        marginTop: "10px",
+                      }}
+                    >
+                      <Button
+                        type="primary"
+                        onClick={() => {
+                          if (isLogined) {
+                            //참가 신청 넣기
+                            if (window.confirm("참가 신청하시겠습니까?")) {
+                              alert("참가 신청이 완료되었습니다.");
+                            }
+                          } else alert("로그인이 필요한 서비스입니다.");
+                        }}
+                      >
+                        참가 신청
+                      </Button>
                     </div>
                     <h4>댓글 전체보기</h4>
                     <hr />
