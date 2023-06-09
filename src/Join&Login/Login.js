@@ -23,7 +23,7 @@ function Login(props) {
 
     if (id === userData?.userID && pwd === userData?.userPWD) {
       setIsLogined(true);
-      window.confirm(`로그인 성공`);
+      window.alert(`로그인 성공! ${id}님 반갑습니다!`);
       navigate("/");
     } else {
       setIsLogined(false);

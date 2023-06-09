@@ -78,7 +78,6 @@ const Home = (props) => {
                 onClick={() => {
                   if (!isLogined) alert("로그인이 필요한 서비스입니다.");
                   else {
-                    //Post 컴포넌트 전달
                     navigate("/post");
                   }
                 }}
@@ -105,17 +104,6 @@ const Home = (props) => {
                   }
                   description={
                     <>
-                      {/* <div
-                        style={{
-                          fontSize: "0.8rem",
-                          textAlign: "end",
-                          marginBottom: "10px",
-                        }}
-                      >
-                        {item.tag.map((i) => (
-                          <span>#{i} &nbsp;</span>
-                        ))}
-                      </div> */}
                       <div
                         style={{
                           fontSize: "1rem",

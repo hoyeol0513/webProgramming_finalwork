@@ -2,14 +2,28 @@ import React from "react";
 import Footer from "../Acc/Footer";
 import "../Home/Home.css";
 import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
+import { Button, Tabs } from "antd";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
+import WrittenItem from "./WrittenItem";
+import FavoriteItem from "./FavoriteItem";
 
 const List = (props) => {
-  const { isLogined, setIsLogined } = props;
+  const { isLogined, setIsLogined, listdata } = props;
   const navigate = useNavigate();
+  const items = [
+    {
+      key: "1",
+      label: "내가 작성한 글",
+      children: <WrittenItem listdata={listdata} />,
+    },
+    {
+      key: "2",
+      label: "관심 글",
+      children: <FavoriteItem />,
+    },
+  ];
   return (
     <div className="container">
       <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
@@ -46,7 +60,19 @@ const List = (props) => {
         >
           {isLogined ? <LeftSide /> : <UnLogLeftSide />}
         </nav>
-        <main style={{ minHeight: "100vh", paddingLeft: "20px" }}></main>
+        <main style={{ minHeight: "100vh", paddingLeft: "20px" }}>
+          <h2
+            style={{
+              fontWeight: "bolder",
+              fontSize: "1.5rem",
+              margin: "10px 0 30px 0",
+              color: "navy",
+            }}
+          >
+            글 관리
+          </h2>
+          <Tabs type="card" items={items} />
+        </main>
       </div>
       <footer>
         <Footer />
