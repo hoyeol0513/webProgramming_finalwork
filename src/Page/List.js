@@ -1,13 +1,13 @@
 import React from "react";
 import Footer from "../Acc/Footer";
-import "../Home/Home.css";
+import "./Home/Home.css";
 import { useNavigate } from "react-router-dom";
 import { Button, Tabs } from "antd";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
-import WrittenItem from "./WrittenItem";
-import FavoriteItem from "./FavoriteItem";
+import WrittenItem from "../components/WrittenItem";
+import FavoriteItem from "../components/FavoriteItem";
 
 const List = (props) => {
   const { isLogined, setIsLogined, listdata } = props;
@@ -71,7 +71,11 @@ const List = (props) => {
           >
             글 관리
           </h2>
-          <Tabs type="card" items={items} />
+          {isLogined ? (
+            <Tabs type="card" items={items} />
+          ) : (
+            <div>⚠️ 로그인이 되어있지 않아 사용자 정보를 볼 수 없습니다.</div>
+          )}
         </main>
       </div>
       <footer>

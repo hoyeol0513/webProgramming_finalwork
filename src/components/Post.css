@@ -5,21 +5,16 @@
   margin-left: 250px;
 }
 
-button {
+/* button {
   padding: 10px 20px;
   border: 1px solid black;
   background: none;
   cursor: pointer;
   margin-right: 10px;
-}
+} */
 
 .postcontent {
   margin-right: 50px;
   border: 1px solid black;
-  text-align: left;
-}
-
-h3 {
-  margin-left: 250px;
   text-align: left;
 }

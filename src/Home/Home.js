@@ -1,12 +1,12 @@
 import React from "react";
 import "./Home.css";
-import LeftSide from "../Acc/LeftSide";
-import Header from "../Acc/Header";
+import LeftSide from "../../Acc/LeftSide";
+import Header from "../../Acc/Header";
 import { Input, Button, List } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import RightSide from "../Acc/RightSide";
-import UnLogLeftSide from "../Acc/UnLogLeftSide";
-import Footer from "../Acc/Footer";
+import RightSide from "../../Acc/RightSide";
+import UnLogLeftSide from "../../Acc/UnLogLeftSide";
+import Footer from "../../Acc/Footer";
 
 const Home = (props) => {
   const navigate = useNavigate();

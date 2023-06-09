@@ -5,9 +5,9 @@ import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 import Footer from "../Acc/Footer";
-import ReceiveItem from "./ReceiveItem";
-import SendItem from "./SendItem";
-import AnnounceItem from "./AnnounceItem";
+import ReceiveItem from "../components/ReceiveItem";
+import SendItem from "../components/SendItem";
+import AnnounceItem from "../components/AnnounceItem";
 
 const Notice = (props) => {
   const { isLogined, setIsLogined } = props;
@@ -76,7 +76,11 @@ const Notice = (props) => {
           >
             글 관리
           </h2>
-          <Tabs type="card" items={items} />
+          {isLogined ? (
+            <Tabs type="card" items={items} />
+          ) : (
+            <div>⚠️ 로그인이 되어있지 않아 사용자 정보를 볼 수 없습니다.</div>
+          )}
         </main>
       </div>
       <footer>
