@@ -1,14 +1,34 @@
-import { Button } from "antd";
+import { Button, Tabs } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 import Footer from "../Acc/Footer";
+import ReceiveItem from "./ReceiveItem";
+import SendItem from "./SendItem";
+import AnnounceItem from "./AnnounceItem";
 
 const Notice = (props) => {
   const { isLogined, setIsLogined } = props;
   const navigate = useNavigate();
+  const items = [
+    {
+      key: "1",
+      label: "받은 쪽지",
+      children: <ReceiveItem />,
+    },
+    {
+      key: "2",
+      label: "보낸 쪽지",
+      children: <SendItem />,
+    },
+    {
+      key: "3",
+      label: "공지사항",
+      children: <AnnounceItem />,
+    },
+  ];
   return (
     <div className="container">
       <div style={{ display: "block", textAlign: "end", padding: "5px" }}>
@@ -45,7 +65,19 @@ const Notice = (props) => {
         >
           {isLogined ? <LeftSide /> : <UnLogLeftSide />}
         </nav>
-        <main style={{ minHeight: "100vh", paddingLeft: "20px" }}></main>
+        <main style={{ minHeight: "100vh", paddingLeft: "20px" }}>
+          <h2
+            style={{
+              fontWeight: "bolder",
+              fontSize: "1.5rem",
+              margin: "10px 0 30px 0",
+              color: "navy",
+            }}
+          >
+            글 관리
+          </h2>
+          <Tabs type="card" items={items} />
+        </main>
       </div>
       <footer>
         <Footer />
