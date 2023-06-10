@@ -5,7 +5,7 @@ import Header from "../Acc/Header";
 import LeftSide from "../Acc/LeftSide";
 import UnLogLeftSide from "../Acc/UnLogLeftSide";
 import Footer from "../Acc/Footer";
-import "./Home/Home.css";
+import "../Home/Home.css";
 import RightSide from "../Acc/RightSide";
 import { UserOutlined } from "@ant-design/icons";
 

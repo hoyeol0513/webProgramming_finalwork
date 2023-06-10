@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Acc/Footer";
-import "./Home/Home.css";
+import "../Home/Home.css";
 import { useNavigate } from "react-router-dom";
 import { Button, Tabs } from "antd";
 import Header from "../Acc/Header";

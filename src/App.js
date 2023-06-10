@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Home from "./Page/Home/Home";
 import MyPage from "./Page/MyPage";
 import Login from "./Join&Login/Login";
 import Join from "./Join&Login/Join";
@@ -11,6 +10,7 @@ import Post from "./Page/Post";
 import BoardListItem from "./Page/BoardListItem";
 import EditListItem from "./Page/EditListItem";
 import Update from "./Page/Update";
+import Home from "./Home/Home";
 
 function App() {
   const list = [];

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Join&Login/Signcss.css";
+import "./Signcss.css";
 import collabo_logo from "../Acc/logo.png";
 
 function Login(props) {
