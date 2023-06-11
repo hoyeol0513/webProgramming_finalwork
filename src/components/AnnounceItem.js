@@ -8,6 +8,11 @@ class AnnounceItem extends Component {
       activeTab: "mynotes",
       selectedMessage: null,
       list: ["공지사항 1", "공지사항 2", "공지사항 3"],
+      content: {
+        "공지사항 1": "공지사항 1의 내용입니다.",
+        "공지사항 2": "공지사항 2의 내용입니다.",
+        "공지사항 3": "공지사항 3의 내용입니다.",
+      },
     };
   }
 
@@ -22,32 +27,31 @@ class AnnounceItem extends Component {
   };
 
   render() {
-    const { activeTab, selectedMessage } = this.state;
+    const { activeTab, selectedMessage, content } = this.state;
 
     return (
       <div>
-        <div className="postcontent">
+        <div className="content">
           {activeTab === "mynotes" && (
             <div>
               {this.state.list.map((item, index) => {
                 return (
-                  <>
-                    <ul>
-                      <li onClick={() => this.handleMessageClick(item)}>
-                        {item}
-                      </li>
-                    </ul>
-                  </>
+                  <ul key={index}>
+                    <li onClick={() => this.handleMessageClick(item)}>
+                      {item}
+                    </li>
+                  </ul>
                 );
               })}
             </div>
           )}
+          {selectedMessage && (
+            <div className="message-content">
+              <p>{selectedMessage}</p>
+              <p>{content[selectedMessage]}</p>
+            </div>
+          )}
         </div>
-        {selectedMessage && (
-          <div className="postcontent">
-            <p>{selectedMessage}</p>
-          </div>
-        )}
       </div>
     );
   }

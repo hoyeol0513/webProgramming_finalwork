@@ -16,7 +16,7 @@ const Majors = [
 ];
 
 const EduBackground = [
-  { value: "자격없음" },
+  { value: "상관없음" },
   { value: "고등학교 졸업" },
   { value: "대학교 재학" },
   { value: "대학교 휴학" },

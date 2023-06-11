@@ -19,14 +19,13 @@ const Majors = [
 ];
 
 const Locations = [
-  { value: "상관없음" },
+  { value: "온라인/오프라인 병행" },
   { value: "온라인" },
   { value: "오프라인" },
 ];
 
 const EduBackground = [
   { value: "상관없음" },
-  { value: "자격없음" },
   { value: "고등학교 재학생" },
   { value: "대학교 재학생" },
   { value: "대학원 재학생" },
