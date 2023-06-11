@@ -4,7 +4,7 @@ import "./Signcss.css";
 import collabo_logo from "../Acc/logo.png";
 
 function Login(props) {
-  const { userData, isLogined, setIsLogined } = props;
+  const { userData, setIsLogined } = props;
   const navigate = useNavigate();
   const [id, userId] = useState("");
   const [pwd, userPwd] = useState("");

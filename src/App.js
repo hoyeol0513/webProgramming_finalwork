@@ -85,7 +85,6 @@ function App() {
               <Login
                 userSignUp={userSignUp}
                 userData={userData}
-                isLogined={isLogined}
                 setIsLogined={setIsLogined}
               />
             }
